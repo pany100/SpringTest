@@ -1,17 +1,45 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans     
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/mvc 
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/context 
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security.xsd">
  
 	<context:component-scan base-package="com.springtest.controller" />
- 	<context:component-scan base-package="com.springtest.dao" />
- 	<context:component-scan base-package="com.springtest.service" />
+ 	<context:component-scan base-package="com.springtest.account.dao" />
+ 	<context:component-scan base-package="com.springtest.account.service" />
+ 	<context:component-scan base-package="com.springtest.account.validator" />
+ 	
+ 	<security:http auto-config="true">
+        <security:intercept-url pattern="/" access="hasRole('ROLE_USER')"/>
+        <security:intercept-url pattern="/hello" access="hasRole('ROLE_USER')"/>
+        <security:form-login 
+        	login-page="/login" default-target-url="/welcome" 
+        	authentication-failure-url="/login?error" username-parameter="username" 
+        	password-parameter="password"/>
+        <security:logout logout-success-url="/login?logout" />
+    </security:http>
+
+    <security:authentication-manager alias="authenticationManager">
+        <security:authentication-provider user-service-ref="userDetailsServiceImpl">
+            <security:password-encoder ref="encoder"></security:password-encoder>
+        </security:authentication-provider>
+    </security:authentication-manager>
+ 	
+    <bean id="userDetailsServiceImpl" class="com.springtest.account.service.UserDetailsServiceImpl"></bean>
+
+    <bean id="encoder"
+          class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+        <constructor-arg name="strength" value="11"/>
+    </bean>
  	
  	<mvc:resources mapping="/resources/css/*" location="/resources/css/"
 	cache-period="31556926"/>
@@ -32,6 +60,7 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>com.springtest.model.User</value>
+				<value>com.springtest.model.Role</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

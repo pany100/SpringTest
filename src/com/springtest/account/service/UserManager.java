@@ -1,4 +1,4 @@
-package com.springtest.service;
+package com.springtest.account.service;
 
 import java.util.List;
 
@@ -8,5 +8,7 @@ public interface UserManager {
 	
 	public void saveUser(User u);
 	public List<User> getAllUsers();
+	void save(User user);
+	User findByUsername(String username);
 
 }

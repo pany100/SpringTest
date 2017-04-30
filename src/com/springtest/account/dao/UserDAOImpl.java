@@ -1,7 +1,8 @@
-package com.springtest.dao;
+package com.springtest.account.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -42,6 +43,18 @@ public class UserDAOImpl implements UserDAO{
 			logger.info("Person list: " + user);
 		}
 		return userList;
+	}
+
+	@Override
+	public User findByUsername(String username) {
+		Session session = this.sessionFactory.openSession();
+		Query query= session.
+		        createQuery("from User where username=:username");
+		query.setParameter("username", username);
+		User user = (User) query.uniqueResult();
+		session.close();
+		logger.info("Found user: " + user);
+		return user;
 	}
 	
 }
