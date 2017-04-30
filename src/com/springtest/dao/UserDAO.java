@@ -6,7 +6,7 @@ import com.springtest.model.User;
 
 public interface UserDAO {
 	
-	public void save(User p);
+	public void save(User u);
 	
 	public List<User> list();
 
