@@ -63,8 +63,7 @@ public class MainController {
 
 	@RequestMapping("/hello")  
     public ModelAndView helloWorld() {  
-        String message = "Hello World, Spring MVC @ Javatpoint";  
-        return new ModelAndView("hello", "message", message);  
+        return new ModelAndView("hello");  
     }
 	
 	@RequestMapping("/contact")  
