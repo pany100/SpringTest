@@ -26,7 +26,7 @@
 		</plugins>
 	</build>
 	<properties>
-		<jackson.version>2.4.1</jackson.version>
+		<jackson.version>2.5.0</jackson.version>
 		<spring.version>4.3.7.RELEASE</spring.version>
 		<hibernate.version>4.3.5.Final</hibernate.version>
 		<jstl.version>1.2</jstl.version>
@@ -39,6 +39,11 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
 		<dependency>
@@ -87,7 +92,7 @@
 			<artifactId>tiles-extras</artifactId>
 			<version>${tiles.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -98,7 +103,7 @@
 			<artifactId>commons-dbcp</artifactId>
 			<version>${dbcp.version}</version>
 		</dependency>
-		
+
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>

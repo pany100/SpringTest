@@ -11,6 +11,12 @@
  
 	<context:component-scan base-package="com.springtest.controller" />
  	<context:component-scan base-package="com.springtest.dao" />
+ 	<context:component-scan base-package="com.springtest.service" />
+ 	
+ 	<mvc:resources mapping="/resources/css/*" location="/resources/css/"
+	cache-period="31556926"/>
+
+    <mvc:annotation-driven />
  
  	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
@@ -48,5 +54,5 @@
                 <value>WEB-INF/tiles.xml</value>  
             </list>  
         </property>  
-    </bean>  
+    </bean>
 </beans>
