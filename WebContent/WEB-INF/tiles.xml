@@ -12,21 +12,36 @@
     </definition>
     
     <definition name="login" extends="base.definition">
-        <put-attribute name="body" value="/WEB-INF/jsp/login/login.jsp" />
+        <put-attribute name="body" value="/WEB-INF/jsp/account/login.jsp" />
     </definition>
     
     <definition name="register" extends="base.definition">
-        <put-attribute name="body" value="/WEB-INF/jsp/login/register.jsp" />
+        <put-attribute name="body" value="/WEB-INF/jsp/account/register.jsp" />
     </definition>
   
-    <definition name="contact" extends="base.definition">  
-        <put-attribute name="title" value="Contact Manager" />  
-        <put-attribute name="body" value="/WEB-INF/jsp/layout/contact.jsp" />  
-    </definition>  
-  
-    <definition name="hello" extends="base.definition">  
+    <definition name="index" extends="base.definition">  
         <put-attribute name="title" value="Hello Spring MVC" />  
-        <put-attribute name="body" value="/WEB-INF/jsp/hello.jsp" />  
-    </definition>  
+        <put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />  
+    </definition>
+    
+    <definition name="new" extends="base.definition">  
+        <put-attribute name="title" value="Create new product" />  
+        <put-attribute name="body" value="/WEB-INF/jsp/product/new.jsp" />  
+    </definition>
+    
+    <definition name="history" extends="base.definition">  
+        <put-attribute name="title" value="Products Sold" />  
+        <put-attribute name="body" value="/WEB-INF/jsp/product/history.jsp" />  
+    </definition>
+    
+    <definition name="list" extends="base.definition">  
+        <put-attribute name="title" value="List of all products" />  
+        <put-attribute name="body" value="/WEB-INF/jsp/product/list.jsp" />  
+    </definition>
+    
+    <definition name="404" extends="base.definition">  
+        <put-attribute name="title" value="Page not found" />  
+        <put-attribute name="body" value="/WEB-INF/jsp/error/404.jsp" />  
+    </definition> 
   
 </tiles-definitions>

@@ -58,18 +58,17 @@ public class MainController {
 
         securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
 
-        return "redirect:/hello";
+        return "redirect:/index";
     }
 
-	@RequestMapping("/hello")  
-    public ModelAndView helloWorld() {  
-        return new ModelAndView("hello");  
+	@RequestMapping("/index")  
+    public ModelAndView indexWorld() {  
+        return new ModelAndView("index");  
     }
 	
-	@RequestMapping("/contact")  
-    public ModelAndView contact() {
-		List<User> list = userService.getAllUsers();
-        return new ModelAndView("contact", "eList", list);  
+	@RequestMapping("/404")  
+    public ModelAndView error() {  
+        return new ModelAndView("404");  
     }
 	
 }

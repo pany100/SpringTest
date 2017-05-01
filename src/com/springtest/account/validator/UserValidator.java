@@ -40,9 +40,6 @@ public class UserValidator implements Validator{
         if (!user.getPasswordConfirm().equals(user.getPassword())) {
             errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
         }
-        if (null == user.getTeam() || user.getTeam().length() == 0) {
-            errors.rejectValue("team", "Null.userForm.team");
-        }
 	}
 
 }

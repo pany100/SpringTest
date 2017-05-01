@@ -28,7 +28,6 @@ public class User {
     
     @Transient
     private String passwordConfirm;
-    private String team;
     
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -36,7 +35,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + getId() + ", username=" + username + ", team=" + team + "]";
+		return "User [id=" + getId() + ", username=" + username + "]";
 	}
 
 	public String getUsername() {
@@ -45,14 +44,6 @@ public class User {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public String getTeam() {
-		return team;
-	}
-
-	public void setTeam(String team) {
-		this.team = team;
 	}
 
 	public Set<Role> getRoles() {

@@ -9,6 +9,7 @@
 		<tiles:insertAttribute name="title" ignore="true" />
 	</title>
 	<link href="<c:url value="/resources/css/theme.css" />" rel="stylesheet">
+	<link href="<c:url value="/resources/css/layout.css" />" rel="stylesheet">
 </head>  
 <body>  
         <div>

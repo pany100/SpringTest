@@ -29,14 +29,6 @@
 	                <form:errors path="passwordConfirm"></form:errors>
 	            </div>
 	        </spring:bind>
-	        
-	         <spring:bind path="team">
-	            <div class="form-group ${status.error ? 'has-error' : ''}">
-	                <form:input type="text" path="team" class="form-control"
-	                            placeholder="Pick your team name"></form:input>
-	                <form:errors path="team"></form:errors>
-	            </div>
-	        </spring:bind>
 	
 	        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
     	</form:form>
