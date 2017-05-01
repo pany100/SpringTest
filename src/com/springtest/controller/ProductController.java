@@ -62,10 +62,10 @@ public class ProductController {
 	
 	@RequestMapping(value = "/buy/{projectId}", method = RequestMethod.POST)
 	public String buy(@PathVariable("projectId") Long projectId) {
+		Product p = productService.findById(projectId);
+		transactionManager.create(p, securityService.getLoggedUser());
 		
-		transactionManager.create(projectId, securityService.getLoggedUser());
-		
-		return "productsToBuy";
+		return "index";
 	}
 	
 	@RequestMapping(value = "/history", method = RequestMethod.GET)

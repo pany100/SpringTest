@@ -1,5 +1,6 @@
 package com.springtest.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,7 @@ public class Transaction {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "product_id", referencedColumnName="id")
 	private Product product;
 
@@ -44,6 +45,7 @@ public class Transaction {
 
 	public void setProduct(Product product) {
 		this.product = product;
+		this.product.setSold(Boolean.TRUE);
 	}
 
 	public User getSeller() {

@@ -56,4 +56,9 @@ public class ProductManagerImpl implements ProductManager{
         productDao.save(p);
 	}
 
+	@Override
+	public Product findById(Long projectId) {
+		return productDao.findById(projectId);
+	}
+
 }

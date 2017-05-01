@@ -16,5 +16,7 @@ public interface ProductManager {
 	public List<Product> findAllProductsToSell(User u);
 
 	public void create(String name, Long price, MultipartFile files, User loggedUser);
+
+	public Product findById(Long projectId);
 	
 }

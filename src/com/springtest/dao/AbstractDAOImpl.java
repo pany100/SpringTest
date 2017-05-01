@@ -39,7 +39,7 @@ public abstract class AbstractDAOImpl<T> implements AbstractDAO<T>{
 	public void save(T model){
 		Session session = this.sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
-		session.persist(model);
+		session.merge(model);
 		tx.commit();
 		session.close();
 		logger.info("Model saved successfully, Details=" + model);

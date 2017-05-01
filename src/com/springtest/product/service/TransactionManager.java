@@ -12,5 +12,5 @@ public interface TransactionManager {
 
 	public List<Product> findAllProductsTransactionedByUser(User u);
 
-	public void create(Long projectId, User currentUser);	
+	public void create(Product product, User currentUser);	
 }
