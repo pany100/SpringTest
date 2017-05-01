@@ -73,6 +73,7 @@
 			<list>
 				<value>com.springtest.model.User</value>
 				<value>com.springtest.model.Role</value>
+				<value>com.springtest.model.Product</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

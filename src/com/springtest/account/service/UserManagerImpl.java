@@ -33,7 +33,7 @@ public class UserManagerImpl implements UserManager {
 	@Override
 	@Transactional
 	public List<User> getAllUsers() {
-		return userDao.list();
+		return userDao.findAll();
 	}
 	
 	@Override

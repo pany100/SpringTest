@@ -11,6 +11,7 @@
         <put-attribute name="footer" value="/WEB-INF/jsp/layout/footer.jsp" />  
     </definition>
     
+    <!-- Initial views -->
     <definition name="login" extends="base.definition">
         <put-attribute name="body" value="/WEB-INF/jsp/account/login.jsp" />
     </definition>
@@ -24,6 +25,7 @@
         <put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />  
     </definition>
     
+    <!-- Product views -->
     <definition name="new" extends="base.definition">  
         <put-attribute name="title" value="Create new product" />  
         <put-attribute name="body" value="/WEB-INF/jsp/product/new.jsp" />  
