@@ -8,7 +8,7 @@
 
 <div class="row">
 	<div class="text-center">
-		<h2>Products to buy</h2>
+		<h2>Your products</h2>
 	</div>
 </div>
 <div class="row">
@@ -24,14 +24,14 @@
 						  	<div class="col-xs-6">Price</div>
 						  	<div class="col-xs-6">$ ${listValue.price}</div>
 						  	<div class="col-xs-12">
-						  		<img class="card-image" src="${cdnUrl}/${listValue.image}">
+						  		<img class="card-image center-block" src="${cdnUrl}/${listValue.image}">
 						  	</div>
 						</div>
 					</div>
 				</c:forEach>
 		    </c:when>    
 		    <c:otherwise>
-		       <h2 class="text-center">Nothing to buy yet</h2>
+		       <h2 class="text-center">Nothing published yet</h2>
 		    </c:otherwise>
 		</c:choose>
 	</div>

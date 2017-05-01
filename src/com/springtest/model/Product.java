@@ -24,6 +24,7 @@ public class Product {
 	private String name;
 	private Long price;
 	private String image;
+	private Boolean sold;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id",referencedColumnName="id")
@@ -70,6 +71,22 @@ public class Product {
 
 	public void setImageFile(MultipartFile imageFile) {
 		this.imageFile = imageFile;
+	}
+
+	public Boolean getSold() {
+		return sold;
+	}
+
+	public void setSold(Boolean sold) {
+		this.sold = sold;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 }

@@ -8,7 +8,7 @@
 
 <div class="row">
 	<div class="text-center">
-		<h2>Your products</h2>
+		<h2>Products to buy</h2>
 	</div>
 </div>
 <div class="row">
@@ -16,6 +16,9 @@
 		<c:choose>
 		    <c:when test="${not empty products}">
 		        <c:forEach var="listValue" items="${products}">
+		        	<form id="buyProduct-${listValue.id}" method="POST" action="${contextPath}/product/buy/${listValue.id}">
+				         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+				    </form>
 					<div class="col-xs-4 panel panel-primary">
 						<div class="panel-heading">
 						  	<h3 class="panel-title">${listValue.name}</h3>
@@ -24,14 +27,18 @@
 						  	<div class="col-xs-6">Price</div>
 						  	<div class="col-xs-6">$ ${listValue.price}</div>
 						  	<div class="col-xs-12">
-						  		<img class="card-image" src="${cdnUrl}/${listValue.image}">
+						  		<img class="card-image center-block" src="${cdnUrl}/${listValue.image}">
+						  	</div>
+						  	<div class="col-xs-4 col-xs-offset-4">
+						  		<a class="cursor-pointer btn btn-success" 
+						  		onclick="document.forms['buyProduct-${listValue.id}'].submit()">Buy</a>
 						  	</div>
 						</div>
 					</div>
 				</c:forEach>
 		    </c:when>    
 		    <c:otherwise>
-		       <h2 class="text-center">Nothing published yet</h2>
+		       <h2 class="text-center">Nothing to buy yet</h2>
 		    </c:otherwise>
 		</c:choose>
 	</div>

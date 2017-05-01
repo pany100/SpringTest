@@ -7,26 +7,18 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import com.springtest.model.Product;
+import com.springtest.model.Transaction;
 import com.springtest.model.User;
 
 @Repository
-public class ProductDAOImpl extends AbstractDAOImpl<Product> implements ProductDAO{
-
-	@Override
-	public List<Product> findAllProductsFromUser(User u) {
-		List<Product> products = u.getProducts();
-		for (Product prod : products) {
-			logger.info("Fetching list: " + prod);
-		}
-		return products;
-	}
+public class TransactionDAOImpl extends AbstractDAOImpl<Transaction> implements TransactionDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Product> findAllProductsToSell(User u) {
+	public List<Product> findAllProductsTransactionedByUser(User u) {
 		Session session = getSessionFactory().openSession();
 		Query query= session.
-		        createQuery("from Product where publisher!=:u and sold = false");
+		        createQuery("from Product where seller= : u or buyer = :u");
 		query.setParameter("u", u);
 		List<Product> products = (List<Product>) query.list();
 		session.close();
@@ -34,8 +26,7 @@ public class ProductDAOImpl extends AbstractDAOImpl<Product> implements ProductD
 			logger.info("Fetching list: " + prod);
 		}
 		return products;
+		
 	}
 
-	
-	
 }

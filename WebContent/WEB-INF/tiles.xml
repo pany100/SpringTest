@@ -38,12 +38,12 @@
     
     <definition name="myProducts" extends="base.definition">  
         <put-attribute name="title" value="My product list" />  
-        <put-attribute name="body" value="/WEB-INF/jsp/product/product-list.jsp" />  
+        <put-attribute name="body" value="/WEB-INF/jsp/product/myProducts.jsp" />  
     </definition>
     
-    <definition name="list" extends="base.definition">  
+    <definition name="productsToBuy" extends="base.definition">  
         <put-attribute name="title" value="Products to buy" />
-        <put-attribute name="body" value="/WEB-INF/jsp/product/list.jsp" />  
+        <put-attribute name="body" value="/WEB-INF/jsp/product/productsToBuy.jsp" />  
     </definition>
     
     <definition name="404" extends="base.definition">  

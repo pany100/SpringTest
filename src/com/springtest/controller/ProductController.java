@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.springtest.account.service.SecurityService;
 import com.springtest.model.Product;
 import com.springtest.product.service.ProductManager;
+import com.springtest.product.service.TransactionManager;
 
 @Controller
 @RequestMapping("/product")
@@ -22,13 +24,16 @@ public class ProductController {
 	private ProductManager productService;
 	
 	@Autowired
+	private TransactionManager transactionManager;
+	
+	@Autowired
 	private SecurityService securityService;
 	
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/productsToBuy", method = RequestMethod.GET)
     public String list(Model model) {
 		List<Product> product = productService.findAllProductsToSell(securityService.getLoggedUser());
 		model.addAttribute("products", product);
-		return "list";
+		return "productsToBuy";
     }
 	
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
@@ -41,14 +46,8 @@ public class ProductController {
 			@RequestParam("imageFile") MultipartFile[] files,
 			@RequestParam("price") Long[] price) {
 		
-        Product p = new Product();
-        if (files.length > 0) {
-        	p.setImageFile(files[0]);	
-        }
-        p.setName(names[0]);
-        p.setPrice(price[0]);
-        p.setPublisher(securityService.getLoggedUser());
-        productService.save(p);
+        //TODO Add validations to this post
+        productService.create(names[0], price[0], files[0], securityService.getLoggedUser());
         
         return "redirect:myProducts";
 
@@ -57,9 +56,17 @@ public class ProductController {
 	@RequestMapping(value = "/myProducts", method = RequestMethod.GET)
     public String myProduct(Model model) {
 		List<Product> product = productService.findAllProductsFromUser(securityService.getLoggedUser());
-		model.addAttribute("myProducts", product);
+		model.addAttribute("products", product);
 		return "myProducts";
     }
+	
+	@RequestMapping(value = "/buy/{projectId}", method = RequestMethod.POST)
+	public String buy(@PathVariable("projectId") Long projectId) {
+		
+		transactionManager.create(projectId, securityService.getLoggedUser());
+		
+		return "productsToBuy";
+	}
 	
 	@RequestMapping(value = "/history", method = RequestMethod.GET)
     public String history(Model model) {

@@ -8,4 +8,6 @@ public interface AbstractDAO<T> {
 	
 	public List<T> findAll();
 	
+	public T findById(Long id);
+	
 }

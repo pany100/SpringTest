@@ -1,16 +1,16 @@
 package com.springtest.dao;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 
 public abstract class AbstractDAOImpl<T> implements AbstractDAO<T>{
 
@@ -54,6 +54,19 @@ public abstract class AbstractDAOImpl<T> implements AbstractDAO<T>{
 			logger.info("Fetching list: " + obj);
 		}
 		return objectList;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public T findById(Long id) {		
+		Session session = getSessionFactory().openSession();
+		Query query= session.
+		        createQuery("from " + type.getSimpleName() + " where id=:id");
+		query.setParameter("id", id);
+		T element = (T) query.uniqueResult();
+		session.close();
+		logger.info("Fetching element: " + element);
+		return element;
 	}
 	
 }

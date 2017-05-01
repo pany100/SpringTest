@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.springtest.common.service.ImagePersister;
 import com.springtest.dao.ProductDAO;
@@ -41,6 +42,18 @@ public class ProductManagerImpl implements ProductManager{
 	@Transactional
 	public List<Product> findAllProductsToSell(User u) {
 		return productDao.findAllProductsToSell(u);
+	}
+
+	@Override
+	@Transactional
+	public void create(String name, Long price, MultipartFile file, User loggedUser) {
+		Product p = new Product();
+    	p.setImageFile(file);	
+        p.setName(name);
+        p.setPrice(price);
+        p.setSold(Boolean.FALSE);
+        p.setPublisher(loggedUser);
+        productDao.save(p);
 	}
 
 }

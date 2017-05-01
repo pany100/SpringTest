@@ -18,7 +18,7 @@
      		<a href="<c:url value="/product/myProducts"/>" class="btn btn-success">My Products</a>
      	</div>
      	<div class="col-xs-3 text-center">
-     		<a href="<c:url value="/product/list"/>" class="btn btn-success">Buy Product</a>
+     		<a href="<c:url value="/product/productsToBuy"/>" class="btn btn-success">Buy Product</a>
      	</div>
      	<div class="col-xs-3 text-center">
      		<a href="<c:url value="/product/history"/>" class="btn btn-success">Transaction History</a>
