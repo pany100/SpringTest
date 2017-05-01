@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "product")
@@ -20,12 +23,14 @@ public class Product {
 	
 	private String name;
 	private Long price;
-	
 	private String image;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id",referencedColumnName="id")
 	private User publisher;
+	
+	@Transient
+	private MultipartFile imageFile;
 	
 	public String getName() {
 		return name;
@@ -57,6 +62,14 @@ public class Product {
 
 	public void setPublisher(User publisher) {
 		this.publisher = publisher;
+	}
+
+	public MultipartFile getImageFile() {
+		return imageFile;
+	}
+
+	public void setImageFile(MultipartFile imageFile) {
+		this.imageFile = imageFile;
 	}
 
 }

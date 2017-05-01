@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.springtest.account.dao.UserDAO;
+import com.springtest.dao.UserDAO;
 import com.springtest.model.Role;
 import com.springtest.model.User;
 
@@ -23,7 +23,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	@Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userDao.findByUsername(username);
+        User user = this.userDao.findByUsername(username);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         for (Role role : user.getRoles()){

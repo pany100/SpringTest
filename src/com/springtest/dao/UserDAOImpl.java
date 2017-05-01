@@ -1,4 +1,4 @@
-package com.springtest.account.dao;
+package com.springtest.dao;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -11,7 +11,7 @@ public class UserDAOImpl extends AbstractDAOImpl<User> implements UserDAO{
 	
 	@Override
 	public User findByUsername(String username) {
-		Session session = this.getSessionFactory().openSession();
+		Session session = getSessionFactory().openSession();
 		Query query= session.
 		        createQuery("from User where username=:username");
 		query.setParameter("username", username);

@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
+import com.springtest.model.User;
+
 @Service
 public class SecurityServiceImpl implements SecurityService{
 	
@@ -18,6 +20,9 @@ public class SecurityServiceImpl implements SecurityService{
 	
 	@Autowired
     private AuthenticationManager authenticationManager;
+	
+	@Autowired
+	private UserManager userService;
 
 	private static final Logger logger = LoggerFactory.getLogger(SecurityServiceImpl.class);
 
@@ -42,6 +47,14 @@ public class SecurityServiceImpl implements SecurityService{
             SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
             logger.debug(String.format("Auto login %s successfully!", username));
         }
+	}
+
+	@Override
+	public User getLoggedUser() {
+		org.springframework.security.core.userdetails.User principal = 
+					(org.springframework.security.core.userdetails.User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
+		return userService.findByUsername(principal.getUsername());
 	}
 	
 	

@@ -8,8 +8,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.springtest.account.dao.RoleDAO;
-import com.springtest.account.dao.UserDAO;
+import com.springtest.dao.RoleDAO;
+import com.springtest.dao.UserDAO;
 import com.springtest.model.User;
 
 @Service

@@ -12,13 +12,13 @@
 	 </div>
      <div class="row space-top">
      	<div class="col-xs-4 text-center">
-     		<a href="<c:url value="/product/new"/>" class="btn btn-success">Publicar producto</a>
+     		<a href="<c:url value="/product/new"/>" class="btn btn-success">Publish Product</a>
      	</div>
      	<div class="col-xs-4 text-center">
-     		<a href="<c:url value="/product/list"/>" class="btn btn-success">Comprar producto</a>
+     		<a href="<c:url value="/product/list"/>" class="btn btn-success">Buy Product</a>
      	</div>
      	<div class="col-xs-4 text-center">
-     		<a href="<c:url value="/product/history"/>" class="btn btn-success">Historial Ventas</a>
+     		<a href="<c:url value="/product/history"/>" class="btn btn-success">Sell History</a>
      	</div>
      </div>
      
