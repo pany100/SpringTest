@@ -32,8 +32,15 @@ public class ProductManagerImpl implements ProductManager{
 	}
 
 	@Override
+	@Transactional
 	public List<Product> findAllProductsFromUser(User u) {
 		return productDao.findAllProductsFromUser(u);
+	}
+
+	@Override
+	@Transactional
+	public List<Product> findAllProductsToSell(User u) {
+		return productDao.findAllProductsToSell(u);
 	}
 
 }

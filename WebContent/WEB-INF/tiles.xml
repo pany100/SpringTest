@@ -36,22 +36,14 @@
         <put-attribute name="body" value="/WEB-INF/jsp/product/history.jsp" />  
     </definition>
     
-    <definition name="list" extends="base.definition">  
-        <put-attribute name="title" value="List of all products" />  
-        <put-attribute name="body" value="/WEB-INF/jsp/product/list.jsp" />  
-    </definition>
-    
-    <definition name="product-list" extends="base.definition">  
+    <definition name="myProducts" extends="base.definition">  
+        <put-attribute name="title" value="My product list" />  
         <put-attribute name="body" value="/WEB-INF/jsp/product/product-list.jsp" />  
     </definition>
     
-    <definition name="myProducts" extends="product-list">  
-        <put-attribute name="title" value="My product list" />  
-    </definition>
-    
-    <definition name="productsToBuy" extends="product-list">  
+    <definition name="list" extends="base.definition">  
         <put-attribute name="title" value="Products to buy" />
-        <put-attribute name="body" value="/WEB-INF/jsp/product/list.jsp" /> 
+        <put-attribute name="body" value="/WEB-INF/jsp/product/list.jsp" />  
     </definition>
     
     <definition name="404" extends="base.definition">  

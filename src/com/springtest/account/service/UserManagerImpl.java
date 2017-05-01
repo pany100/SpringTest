@@ -37,6 +37,7 @@ public class UserManagerImpl implements UserManager {
 	}
 	
 	@Override
+	@Transactional
     public void save(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setRoles(new HashSet<>(roleDao.findAll()));
@@ -44,6 +45,7 @@ public class UserManagerImpl implements UserManager {
     }
 
     @Override
+    @Transactional
     public User findByUsername(String username) {
         return userDao.findByUsername(username);
     }

@@ -9,4 +9,6 @@ public interface ProductDAO extends AbstractDAO<Product>{
 
 	List<Product> findAllProductsFromUser(User u);
 
+	List<Product> findAllProductsToSell(User u);
+
 }

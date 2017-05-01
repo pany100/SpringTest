@@ -11,14 +11,17 @@
 	 	</div>
 	 </div>
      <div class="row space-top">
-     	<div class="col-xs-4 text-center">
+     	<div class="col-xs-3 text-center">
      		<a href="<c:url value="/product/new"/>" class="btn btn-success">Publish Product</a>
      	</div>
-     	<div class="col-xs-4 text-center">
+     	<div class="col-xs-3 text-center">
+     		<a href="<c:url value="/product/myProducts"/>" class="btn btn-success">My Products</a>
+     	</div>
+     	<div class="col-xs-3 text-center">
      		<a href="<c:url value="/product/list"/>" class="btn btn-success">Buy Product</a>
      	</div>
-     	<div class="col-xs-4 text-center">
-     		<a href="<c:url value="/product/history"/>" class="btn btn-success">Sell History</a>
+     	<div class="col-xs-3 text-center">
+     		<a href="<c:url value="/product/history"/>" class="btn btn-success">Transaction History</a>
      	</div>
      </div>
      

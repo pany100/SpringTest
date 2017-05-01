@@ -26,6 +26,8 @@ public class ProductController {
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model) {
+		List<Product> product = productService.findAllProductsToSell(securityService.getLoggedUser());
+		model.addAttribute("products", product);
 		return "list";
     }
 	
@@ -57,7 +59,6 @@ public class ProductController {
 		List<Product> product = productService.findAllProductsFromUser(securityService.getLoggedUser());
 		model.addAttribute("myProducts", product);
 		return "myProducts";
-
     }
 	
 	@RequestMapping(value = "/history", method = RequestMethod.GET)

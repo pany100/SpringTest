@@ -10,5 +10,7 @@ public interface ProductManager {
 	public void save(Product p);
 
 	public List<Product> findAllProductsFromUser(User u);
+
+	public List<Product> findAllProductsToSell(User u);
 	
 }
