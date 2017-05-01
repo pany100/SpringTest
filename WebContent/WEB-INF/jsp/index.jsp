@@ -7,7 +7,7 @@
      </form>
 	 <div class="row">
 	 	<div class="col-xs-12">
-	 		<h4 class="text-center">Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h4>
+	 		<h4 class="text-center">Welcome ${pageContext.request.userPrincipal.name} | <a class="cursor-pointer" onclick="document.forms['logoutForm'].submit()">Logout</a></h4>
 	 	</div>
 	 </div>
      <div class="row space-top">
