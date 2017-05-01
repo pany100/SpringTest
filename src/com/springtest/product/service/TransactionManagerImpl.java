@@ -25,8 +25,8 @@ public class TransactionManagerImpl implements TransactionManager {
 
 	@Override
 	@Transactional
-	public List<Product> findAllProductsTransactionedByUser(User u) {
-		return transactionDAO.findAllProductsTransactionedByUser(u);
+	public List<Transaction> findAllTransactionsFromUser(User u) {
+		return transactionDAO.findAllTransactionsFromUser(u);
 	}
 
 	@Override

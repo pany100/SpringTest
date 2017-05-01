@@ -29,7 +29,7 @@
 						  	<div class="col-xs-12">
 						  		<img class="card-image center-block" src="${cdnUrl}/${listValue.image}">
 						  	</div>
-						  	<div class="col-xs-4 col-xs-offset-4">
+						  	<div class="col-xs-4 col-xs-offset-4 space-top">
 						  		<a class="cursor-pointer btn btn-success" 
 						  		onclick="document.forms['buyProduct-${listValue.id}'].submit()">Buy</a>
 						  	</div>

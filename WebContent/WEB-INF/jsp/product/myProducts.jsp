@@ -1,7 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <spring:eval expression="@propertyConfigurer.getProperty('project.cdnUrl')" var="cdnUrl" />
@@ -16,7 +15,7 @@
 		<c:choose>
 		    <c:when test="${not empty products}">
 		        <c:forEach var="listValue" items="${products}">
-					<div class="col-xs-4 panel panel-primary">
+		        	<div class="col-xs-4 panel panel-primary">
 						<div class="panel-heading">
 						  	<h3 class="panel-title">${listValue.name}</h3>
 						</div>
@@ -26,6 +25,16 @@
 						  	<div class="col-xs-12">
 						  		<img class="card-image center-block" src="${cdnUrl}/${listValue.image}">
 						  	</div>
+						  	<c:if test="${listValue.sold == true}">
+						  		<div class="col-xs-4 col-xs-offset-4 space-top">
+						  			<a href="#" class="btn btn-danger disabled">SOLD</a>
+						  		</div>
+						  	</c:if>
+						  	<c:if test="${listValue.sold == false}">
+						  		<div class="col-xs-4 col-xs-offset-4 space-top">
+						  			<a href="#" class="btn btn-success disabled">FOR SALE</a>
+						  		</div>
+						  	</c:if>
 						</div>
 					</div>
 				</c:forEach>

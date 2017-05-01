@@ -10,7 +10,7 @@ public interface TransactionManager {
 
 	public void save(Transaction p);
 
-	public List<Product> findAllProductsTransactionedByUser(User u);
+	public List<Transaction> findAllTransactionsFromUser(User u);
 
 	public void create(Product product, User currentUser);	
 }

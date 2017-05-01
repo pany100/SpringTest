@@ -13,6 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.springtest.account.service.SecurityService;
 import com.springtest.model.Product;
+import com.springtest.model.Transaction;
+import com.springtest.model.User;
 import com.springtest.product.service.ProductManager;
 import com.springtest.product.service.TransactionManager;
 
@@ -70,6 +72,10 @@ public class ProductController {
 	
 	@RequestMapping(value = "/history", method = RequestMethod.GET)
     public String history(Model model) {
+		User currentUser = securityService.getLoggedUser();
+		List<Transaction> txs = transactionManager.findAllTransactionsFromUser(currentUser);
+		model.addAttribute("transactions", txs);
+		model.addAttribute("currentUser", currentUser);
         return "history";
     }
 

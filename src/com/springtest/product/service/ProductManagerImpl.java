@@ -53,7 +53,7 @@ public class ProductManagerImpl implements ProductManager{
         p.setPrice(price);
         p.setSold(Boolean.FALSE);
         p.setPublisher(loggedUser);
-        productDao.save(p);
+        save(p);
 	}
 
 	@Override
